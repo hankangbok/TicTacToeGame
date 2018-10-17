@@ -1,0 +1,14 @@
+
+/* flex parent */
+#container {
+  border: 5px red solid;
+  display:flex;
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+/* flex item */
+.gamesquare {
+  border: 10px blue solid; 
+  min-width:calc(33% - 20px);
+}
