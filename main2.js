@@ -17,10 +17,19 @@ function renderSquare(marker,squareIndex) {
     const content = document.createElement('button');
     content.classList.add('gameboarda');
     content.id = 'testItem'+squareIndex;
-    content.textContent = marker;
-    
+    if (marker!=0) {
+      content.textContent = marker;
+    }
     container.appendChild(content);
   }
+  
+function getCurrentPlayer() {
+  console.log(turnNumber);
+  if (turnNumber%2==0) {
+    return player2;
+  }
+  else {return player1;}
+}
 
 function buttonPress() {
   i=0;
@@ -36,25 +45,67 @@ function buttonPress() {
       index = selectTest.id[selectTest.id.length-1];
       gameBoard[index] = currentP.marker;
       console.log(gameBoard);
+      if (checkisWin()==true) {
+        displayWinner();
+      }
+
       turnNumber++;
-      checkisWin();
+      if (turnNumber == 9 && checkisWin()==false) {
+        console.log("no one wins!");
+      }
     });
     i++;
   }
 }
-
-function getCurrentPlayer() {
-  console.log(turnNumber);
-  if (turnNumber%2==0) {
-    return player2;
+function displayWinner() {
+  getCurrentPlayer();
+  console.log(getCurrentPlayer().name);
+  var x = document.getElementsByClassName('gameboarda');
+  for (j=0;j<9;j++) {
+    x[j].disabled=true;
   }
-  else {return player1;}
 }
 
 function checkisWin() {
-  // Check squares 1, 5, 9  to determine 
+  // Check squares 1, 5, 9  to determine if a winning case exists
+  // from 1,5,9, you can text possible win cases
+  // There must be a marker in 1,5, or 9 for a win case to exist
+  // Dude theres gotta be a way to reduce this down
   relevantMarker = getCurrentPlayer().marker;
-  if (gameBoard[1] != relevantMarker && gameBoard[1] != relevantMarker\ && gameBoard[1] != relevantMarker
+  winPossible=undefined;
+  if (gameBoard[0]==relevantMarker) {
+    if (gameBoard[0]==gameBoard[1]&&gameBoard[0]==gameBoard[2]) {
+      return true;
+    }
+    if (gameBoard[0]==gameBoard[3]&&gameBoard[0]==gameBoard[6]) {
+      return true;
+    }
+  }
+  if (gameBoard[4]==relevantMarker) {
+    if (gameBoard[4]==gameBoard[1]&&gameBoard[4]==gameBoard[7]) {
+      return true;
+    }
+    if (gameBoard[4]==gameBoard[3]&&gameBoard[4]==gameBoard[5]) {
+      return true;
+    }
+    if (gameBoard[4]==gameBoard[0]&&gameBoard[4]==gameBoard[8]) {
+      return true;
+    }
+    if (gameBoard[4]==gameBoard[2]&&gameBoard[4]==gameBoard[6]) {
+      return true;
+    }
+  }
+  if (gameBoard[8]==relevantMarker) {
+    if (gameBoard[8]==gameBoard[2]&&gameBoard[8]==gameBoard[5]) {
+      return true;
+    }
+    if (gameBoard[8]==gameBoard[6]&&gameBoard[8]==gameBoard[7]) {
+      return true;
+    }
+  }
+  else {
+    return false;
+  }
 }
 
 function gamePlay() {
@@ -62,6 +113,7 @@ function gamePlay() {
   displayBoard();
   buttonPress();
   turnNumber = 0;
+
 }
 const player1 = playerFactory("Bokyung","X");
 const player2 = playerFactory("David Tennant","O");

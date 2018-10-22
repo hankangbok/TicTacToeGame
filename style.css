@@ -1,10 +1,39 @@
+/* CSS Reset */
+html,body,div,span,header {
+  margin:0;
+  padding:0;
+  border:0;
+  font-family:Arial, Helvetica, sans-serif;
+}
+
+
+/* flex parent for whole page */
+#flexParent{
+  display:flex;
+  flex-direction: column;
+  flex-wrap:wrap;
+}
+
+/* flex child */
+header {
+  flex:1;
+  font-family: Arial, Helvetica, sans-serif;
+  font: 30px bold ;
+  color: white;
+  height: 50px;
+  background-color:rgb(205, 57, 241);
+  background: -webkit-linear-gradient(rgb(18, 1, 26), rgb(96, 33, 138));
+  background: -moz-linear-gradient(rgb(18, 1, 26), rgb(96, 33, 138));
+  background: linear-gradient(rgb(18, 1, 26), rgb(96, 33, 138));
+}
 
 /* flex parent */
 #container {
-  border: 5px red solid;
   display:flex;
   flex-wrap: wrap;
   text-align: center;
+  margin-left:10%;
+  margin-right:10%;
 }
 
 /* flex item */
@@ -14,18 +43,19 @@
   margin:1px;
 }
 
-.gameboardButton {
-  border:10px blue solid;
+.gameboardA {
+  border:5px purple solid;
+  background-color:white;
   flex:1;
   min-width:calc(33% - 20px);
-  margin:1px;
+  height: calc(30vw - 20px);
+  font-size:40px;
 }
 
-.gameboardA {
-  border:10px purple solid;
-  flex:1;
-  min-width:calc(33% - 20px);
-  height: 100px;
-  margin:1px;
-  font-size:20px;
+#startButton {
+  width:30%;
+  margin-top:20px;
+  margin-left:35%;
+  padding:20px;
+  font-size:25px;
 }
