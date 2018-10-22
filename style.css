@@ -11,4 +11,21 @@
 .gamesquare {
   border: 10px blue solid; 
   min-width:calc(33% - 20px);
+  margin:1px;
+}
+
+.gameboardButton {
+  border:10px blue solid;
+  flex:1;
+  min-width:calc(33% - 20px);
+  margin:1px;
+}
+
+.gameboardA {
+  border:10px purple solid;
+  flex:1;
+  min-width:calc(33% - 20px);
+  height: 100px;
+  margin:1px;
+  font-size:20px;
 }
