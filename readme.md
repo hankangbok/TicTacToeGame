@@ -1,3 +1,7 @@
+This project is still a(nother) work in progress. 
+The semi-functional version of the page is deployed at: 
+https://kyouyatamax.github.io/TicTacToeGame/
+
 This is a game of Tic Tac Toe that can be played in the browser
 Learning goals: Factory Functions and Modules in Javascript
 
