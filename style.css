@@ -9,6 +9,8 @@ html,body,div,span,header {
 body {
   background-color:rgba(253, 235, 253,.3);
 }
+h2 {
+}
 
 /* flex parent for whole page */
 #flexParent{
@@ -53,7 +55,7 @@ header {
   font-size:5em;
 }
 
-#startButton {
+#restartButton {
   width:30%;
   margin-top:20px;
   margin-left:35%;

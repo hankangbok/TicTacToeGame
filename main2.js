@@ -46,11 +46,12 @@ function buttonPress() {
       gameBoard[index] = currentP.marker;
       console.log(gameBoard);
       turnNumber++;
-      if (checkisWin()==true) {
-        displayWinner();
-      }
+
       if (turnNumber == 9 && checkisWin()==false) {
         displayMessage("No one Wins =(");
+      }
+      if (checkisWin()==true) {
+        displayWinner();
       }
     });
     i++;
@@ -67,7 +68,7 @@ function displayWinner() {
 
 function displayMessage(someMessage) {
   parentSelected = document.querySelector('#container');
-  winMessage = document.createElement('h2');
+  winMessage = document.createElement('div');
   winMessage.textContent = someMessage;
   parentSelected.appendChild(winMessage);
 }
@@ -112,6 +113,19 @@ function checkisWin() {
   else {
     return false;
   }
+}
+
+function restart() {
+  turnNumber=0;
+  gameBoard = [0,0,0,0,0,0,0,0,0];
+  x=0;
+  while (x<9) {
+    let selectButtons = document.getElementById('testItem'+x);
+    selectButtons.disabled=false;
+    selectButtons.textContent="";
+    x++;
+  }
+
 }
 
 function gamePlay() {
