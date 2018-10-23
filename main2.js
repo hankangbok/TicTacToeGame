@@ -46,12 +46,14 @@ function buttonPress() {
       gameBoard[index] = currentP.marker;
       console.log(gameBoard);
       turnNumber++;
-
-      if (turnNumber == 9 && checkisWin()==false) {
-        displayMessage("No one Wins =(");
-      }
-      if (checkisWin()==true) {
-        displayWinner();
+      callbacktest(turnNumber);
+      function callbacktest (turnNumber) {
+        if (turnNumber == 9 && checkisWin()==false) {
+          displayMessage("No one Wins =(");
+        }
+        if (checkisWin()==true) {
+          displayWinner();
+        }
       }
     });
     i++;
@@ -63,7 +65,7 @@ function displayWinner() {
   for (j=0;j<9;j++) {
     x[j].disabled=true;
   }
-  displayMessage(getCurrentPlayer().name + " wins!");
+  displayMessage(getCurrentPlayer().name + " (" + getCurrentPlayer().marker+ ") wins!");
 }
 
 function displayMessage(someMessage) {
