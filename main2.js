@@ -45,13 +45,12 @@ function buttonPress() {
       index = selectTest.id[selectTest.id.length-1];
       gameBoard[index] = currentP.marker;
       console.log(gameBoard);
+      turnNumber++;
       if (checkisWin()==true) {
         displayWinner();
       }
-
-      turnNumber++;
       if (turnNumber == 9 && checkisWin()==false) {
-        console.log("no one wins!");
+        displayMessage("No one Wins =(");
       }
     });
     i++;
@@ -59,11 +58,18 @@ function buttonPress() {
 }
 function displayWinner() {
   getCurrentPlayer();
-  console.log(getCurrentPlayer().name);
   var x = document.getElementsByClassName('gameboarda');
   for (j=0;j<9;j++) {
     x[j].disabled=true;
   }
+  displayMessage(getCurrentPlayer().name + " wins!");
+}
+
+function displayMessage(someMessage) {
+  parentSelected = document.querySelector('#container');
+  winMessage = document.createElement('h2');
+  winMessage.textContent = someMessage;
+  parentSelected.appendChild(winMessage);
 }
 
 function checkisWin() {
